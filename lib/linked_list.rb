@@ -64,8 +64,10 @@ class LinkedList
   def at(index)
     current_node = @head
     index.times do
-      current_node.value
       current_node = current_node.next_node
+      if current_node == nil
+        return nil
+      end
     end
     current_node
   end
@@ -81,10 +83,13 @@ class LinkedList
     end
     contain
   end
+
+  # Returns the index of the node containing value
+  
 end
 
 list = LinkedList.new
 list.append(3)
 list.append(5)
 list.append(6)
-list.prepend(1)
+p list.at(45)
