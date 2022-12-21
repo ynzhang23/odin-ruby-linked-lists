@@ -85,7 +85,18 @@ class LinkedList
   end
 
   # Returns the index of the node containing value
-  
+  def find(value)
+    index = 0
+    current_node = @head
+    return index if current_node.value == value
+
+    until current_node.next_node.nil?
+      current_node = current_node.next_node
+      index += 1
+      return index if current_node.value == value
+    end
+    nil
+  end
 end
 
 list = LinkedList.new
@@ -93,3 +104,4 @@ list.append(3)
 list.append(5)
 list.append(6)
 p list.at(45)
+p list.find(3)
