@@ -59,6 +59,16 @@ class LinkedList
       current_node
     end
   end
+
+  # Returns the node at the given index
+  def at(index)
+    current_node = @head
+    index.times do
+      current_node.value
+      current_node = current_node.next_node
+    end
+    current_node
+  end
 end
 
 list = LinkedList.new
