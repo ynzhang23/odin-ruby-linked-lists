@@ -12,25 +12,12 @@ class LinkedList
     @tail = nil
   end
 
-  # Returns the last node of the list
-  def last
-    if @head.nil?
-      nil
-    else
-      current_node = @head
-      until current_node.next_node.nil?
-        current_node = current_node.next_node
-      end
-      current_node
-    end
-  end
-
   # Adds a new node containing 'value' to the end of the list
   def append(value)
     if @head.nil?
       @head = Node.new(value, @tail)
     else
-      last.next_node = Node.new(value, @tail)
+      return_tail.next_node = Node.new(value, @tail)
     end
   end
 
@@ -56,6 +43,22 @@ class LinkedList
     end
     size
   end
+
+  # Returns the first node in the list
+  def return_head
+    @head
+  end
+
+  # Returns the last node of the list
+  def return_tail
+    if @head.nil?
+      nil
+    else
+      current_node = @head
+      current_node = current_node.next_node until current_node.next_node.nil?
+      current_node
+    end
+  end
 end
 
 list = LinkedList.new
@@ -63,4 +66,3 @@ list.append(3)
 list.append(5)
 list.append(6)
 list.prepend(1)
-p list.size
