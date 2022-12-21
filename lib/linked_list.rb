@@ -65,9 +65,7 @@ class LinkedList
     current_node = @head
     index.times do
       current_node = current_node.next_node
-      if current_node == nil
-        return nil
-      end
+      return nil if current_node.nil?
     end
     current_node
   end
@@ -97,11 +95,16 @@ class LinkedList
     end
     nil
   end
-end
 
-list = LinkedList.new
-list.append(3)
-list.append(5)
-list.append(6)
-p list.at(45)
-p list.find(3)
+  # Represent your LinkedList as strings
+  def to_s
+    string = ''
+    current_node = @head
+    until current_node.next_node.nil?
+      string += "( #{current_node.value} ) -> "
+      current_node = current_node.next_node
+    end
+    string += "( #{current_node.value} ) -> nil"
+    string
+  end
+end
