@@ -107,4 +107,20 @@ class LinkedList
     string += "( #{current_node.value} ) -> nil"
     string
   end
+
+  # Insert a new node with the provided value at given index
+  def insert_at(value, index)
+    if index.zero?
+      prepend(value)
+      return
+    elsif index >= size
+      append(value)
+      return
+    end
+    current_node = @head
+    (index - 1).times do
+      current_node = current_node.next_node
+    end
+    current_node.next_node = Node.new(value, current_node.next_node)
+  end
 end
